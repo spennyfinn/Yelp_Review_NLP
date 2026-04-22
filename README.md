@@ -25,8 +25,18 @@ NLP/
 ├── notebooks/
 │   ├── 01_eda.ipynb                 # Exploratory data analysis
 │   └── 02_modeling.ipynb            # Model training, evaluation, and analysis
+├── outputs/
+│   ├── svm_model.joblib             # Saved SVM model
+│   ├── tfidf_vectorizer.joblib      # Saved TF-IDF vectorizer
+│   ├── confusion_matrix_baseline.png
+│   ├── confusion_matrix_naive_bayes.png
+│   ├── confusion_matrix_svm.png
+│   ├── model_comparison.png
+│   └── wordclouds.png
 ├── src/
 │   └── preprocessing.py             # Preprocessing pipeline script
+├── tests/
+│   └── test_preprocessing.py        # Unit tests for preprocessing functions
 ├── requirements.txt
 └── README.md
 ```
@@ -109,6 +119,18 @@ pip install -r requirements.txt
 
 ---
 
+## Testing
+
+Unit tests cover the core preprocessing functions using `pytest`:
+
+```bash
+pytest tests/ -v
+```
+
+Tests cover `clean_text`, `is_english`, and `limit_review_length` across 24 test cases including edge cases like empty strings, HTML input, URLs, and boundary values.
+
+---
+
 ## Tech Stack
 
 - Python 3.13
@@ -119,3 +141,4 @@ pip install -r requirements.txt
 - wordcloud
 - langdetect
 - pyarrow (Parquet I/O)
+- pytest
